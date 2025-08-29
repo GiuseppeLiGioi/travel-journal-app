@@ -1,5 +1,8 @@
-export default function SearchBar (){
+export default function SearchBar ({onSearch}){
     return(
-        <h3>Sono SearchBar!</h3>
+     <input 
+     type="text"
+     placeholder="Inserisci il testo..." 
+     onChange={(e) => onSearch(e.target.value)}/>
     )
 }

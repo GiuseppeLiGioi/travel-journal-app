@@ -1,9 +1,17 @@
 import { useState } from "react"
 import postsData from "../data/posts.js"
+import Header from "../Components/Header.jsx"
 
 export default function HomePage (){
-const [posts] = useState(postsData)
+const [posts, setPosts] = useState(postsData)
+const [search, setSearch] = useState("")
+const [filter, setFilter] = useState("")
+const [sort, setSort] = useState("")
     return (
-        <h2>Sono HomePage!</h2>
+    <Header 
+    onSearch = {setSearch}
+    onFilter = {setFilter}
+    onSort = {setSort}
+    />
     )
 }
