@@ -2,9 +2,14 @@ export default function FilterDropdown ({onFilter}){
     return(
         <select onChange={(e) => onFilter(e.target.value)}>
          <option value="">-- Come filtrare? --</option>
-         <option value="val1">Testo</option>
-         <option value="">Stato d'animo</option>
-         <option value="">Tags</option>
+         <option value="Felice">Felice</option>
+         <option value="Rilassato">Rilassato</option>
+         <option value="Curioso">Curioso</option>
+
+         <option value="Citta-Food">Citta-Food</option>
+         <option value="Cultura-Castelli">Cultura-Castelli</option>
+         <option value="Mare-Relax">Mare-Relax</option>
+         <option value="Avventura-vino">Avventura-vino</option>
         </select>
     )
 }

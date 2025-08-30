@@ -1,10 +1,10 @@
 import postsData from "../data/posts.js"
 import PostCard from "./PostCard.jsx"
-export default function PostLists(){
+export default function PostLists({posts}){
     return (
         <div className="container-posts">
             {
-              postsData.map((p) => (
+              posts.map((p) => (
             <PostCard key={p.id} post={p}/>
               ))
             }
