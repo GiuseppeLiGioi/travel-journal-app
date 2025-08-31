@@ -15,7 +15,7 @@ const customIcon = L.icon({ //L.icon è la classe di leaflet che serve per crear
 
 
 
-export default function Map() {
+export default function Map({posts}) {
     const center = [38.7223, -9.1393]; //mappa centrata inizialmente sul portogallo
 
     return (
@@ -24,7 +24,7 @@ export default function Map() {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             />
-            {postsData.map((post) => (
+            {posts.map((post) => (
                 <Marker key={post.id} position={[post.lat, post.lng]} icon={customIcon}> {/*al marker fornisco tutte le posizioni esatte */}
                     <Popup>
                         <strong>{post.titolo}</strong><br /> {/*nel popup metto cio che voglio visualizzare accanto al marker */}

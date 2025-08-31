@@ -3,13 +3,14 @@ import postsData from "../data/posts.js";
 import Header from "../Components/Header.jsx";
 import PostLists from "../Components/PostLists.jsx";
 import Map from "../Components/Map.jsx";
+import useStorage from "../hooks/useStorage.js";
 
 export default function HomePage() {
     const [allPosts] = useState(postsData);   
-    const [posts, setPosts] = useState(postsData);
-    const [search, setSearch] = useState("");
-    const [filter, setFilter] = useState("");
-    const [sort, setSort] = useState("");
+    const [posts, setPosts] = useStorage("posts", []);
+    const [search, setSearch] = useStorage("search","");
+    const [filter, setFilter] = useStorage("filter","");
+    const [sort, setSort] = useStorage("sort","");
     const [expandAll, setExpandAll] = useState(false)
 
     useEffect(() => {
@@ -55,7 +56,7 @@ export default function HomePage() {
             <button className="home-expand-btn" onClick={() => setExpandAll(!expandAll)}>{expandAll ? "Riduci tutti" : "Estendi tutti"}</button>
             <PostLists posts={posts} expandAll={expandAll}/>
             
-            <Map/>
+            <Map posts={posts}/>
             
         </>
     );
