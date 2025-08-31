@@ -6,15 +6,15 @@ import Map from "../Components/Map.jsx";
 import useStorage from "../hooks/useStorage.js";
 
 export default function HomePage() {
-    const [allPosts] = useState(postsData);   
+    const [allPosts] = useState(postsData);
     const [posts, setPosts] = useStorage("posts", []);
-    const [search, setSearch] = useStorage("search","");
-    const [filter, setFilter] = useStorage("filter","");
-    const [sort, setSort] = useStorage("sort","");
+    const [search, setSearch] = useStorage("search", "");
+    const [filter, setFilter] = useStorage("filter", "");
+    const [sort, setSort] = useStorage("sort", "");
     const [expandAll, setExpandAll] = useState(false)
 
     useEffect(() => {
-        let filteredPosts = [...allPosts]; 
+        let filteredPosts = [...allPosts];
 
         if (search) {
             filteredPosts = filteredPosts.filter(p =>
@@ -53,11 +53,15 @@ export default function HomePage() {
                 onFilter={setFilter}
                 onSort={setSort}
             />
-            <button className="home-expand-btn" onClick={() => setExpandAll(!expandAll)}>{expandAll ? "Riduci tutti" : "Estendi tutti"}</button>
-            <PostLists posts={posts} expandAll={expandAll}/>
-            
-            <Map posts={posts}/>
-            
+            <div className="container-expand-btn">
+                <button className={expandAll ? "btn-close" : "home-expand-btn"} onClick={() => setExpandAll(!expandAll)}>
+                    {expandAll ? "Riduci tutti" : "Estendi tutti"}
+                </button>
+            </div>
+            <PostLists posts={posts} expandAll={expandAll} />
+
+            <Map posts={posts} />
+
         </>
     );
 }

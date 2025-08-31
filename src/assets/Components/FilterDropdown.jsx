@@ -1,6 +1,6 @@
 export default function FilterDropdown ({onFilter}){
     return(
-        <select onChange={(e) => onFilter(e.target.value)}>
+        <select onChange={(e) => onFilter(e.target.value)} className="select-filter">
                 <option value="">-- Come filtrare? --</option>
                 <option value="felice">Felice</option>
                 <option value="rilassato">Rilassato</option>

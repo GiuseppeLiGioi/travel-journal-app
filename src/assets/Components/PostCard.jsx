@@ -15,14 +15,14 @@ export default function PostCard({ post, expandAll }) {
             <img className="img-postList" src={post.img} alt={post.titolo} />
             <h2 className="title-postList">{post.titolo}</h2>
             <p className="p-postList">{post.descrizione}</p>
-            <button onClick={() => setBtnOpen(!btnOpen)}>
+            <button onClick={() => setBtnOpen(!btnOpen)}  className={btnOpen ? "btn-close" : ""}>
                 {btnOpen ? "Chiudi" : "Estendi"}
             </button>
             {(btnOpen || expandAll) && (
                 <div className="details">
                     <h2 className="title-details">DETTAGLI</h2>
                     <h2 className="place-details"><strong className="strong-place-details">Luogo:</strong> {post.luogo}</h2>
-                    <p className="p-details p-details-stars"><strong className="strong-p-details">Effort Economico:</strong> {renderStars(post.effortEconomico)}</p>
+                    <p className="p-details p-details-stars"><strong className="strong-p-details gold">Effort Economico:</strong> {renderStars(post.effortEconomico)}</p>
                     <p className="p-details"><strong className="strong-p-details">Spesa:</strong> {post.spesa} €</p>
                     <p className="p-details"><strong className="strong-p-details">Stato d'animo:</strong> {post.mood}</p>
                     <p className="p-details">
