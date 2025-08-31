@@ -14,7 +14,7 @@ Travel Journal App è un’applicazione web pensata per registrare e visualizzar
 
 ## Tecnologie scelte
 - **React**: gestione dei componenti e dello stato dell’applicazione.
-- **React Hooks** (`useState`, `useEffect`): gestione dinamica dello stato e degli effetti collaterali.
+- **React Hooks** (`useState`, `useEffect`): gestione dello stato.
 - **React-Leaflet + Leaflet**: visualizzazione della mappa interattiva con marker personalizzati.
 - **CSS moderno**: utilizzo di flexbox e styling responsivo per le card e l’header.
 - **LocalStorage**: mantenimento della persistenza dei dati e delle preferenze dell’utente tra sessioni.
@@ -24,7 +24,7 @@ Travel Journal App è un’applicazione web pensata per registrare e visualizzar
 - `PostLists.jsx` & `PostCard.jsx`: componenti per mostrare i post e i dettagli.
 - `Map.jsx`: componente per la mappa interattiva con tutti i marker.
 - `useStorage.js`: hook personalizzato per salvare e recuperare dati da LocalStorage.
-- `posts.js`: dataset iniziale dei post di viaggio.
+- `posts.js`: file con dati iniziali dei post di viaggio.
 
 ## Note
 L’app è stata sviluppata in pochi giorni per tenermi allenato con il codice. Appreso l'utilizzo di una nuova libreria di React (React-Leaflet)
