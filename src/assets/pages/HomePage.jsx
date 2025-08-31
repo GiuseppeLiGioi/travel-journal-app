@@ -2,26 +2,29 @@ import { useState, useEffect } from "react";
 import postsData from "../data/posts.js";
 import Header from "../Components/Header.jsx";
 import PostLists from "../Components/PostLists.jsx";
+import Map from "../Components/Map.jsx";
 
 export default function HomePage() {
+    const [allPosts] = useState(postsData);   
     const [posts, setPosts] = useState(postsData);
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState("");
     const [sort, setSort] = useState("");
+    const [expandAll, setExpandAll] = useState(false)
 
     useEffect(() => {
-        let filteredPosts = [...posts];
+        let filteredPosts = [...allPosts]; 
 
         if (search) {
             filteredPosts = filteredPosts.filter(p =>
                 p.titolo.toLowerCase().includes(search.toLowerCase().trim())
             );
         }
-          console.log("Filtro applicato:", filter);
 
         if (filter) {
             filteredPosts = filteredPosts.filter(p =>
-               p.mood.toLowerCase().trim().includes(filter.toLowerCase().trim()) || p.tags.includes(filter.toLowerCase().trim())
+                p.mood.toLowerCase() === filter.toLowerCase() ||
+                p.tags.some(tag => tag.toLowerCase() === filter.toLowerCase())
             );
         }
 
@@ -40,7 +43,7 @@ export default function HomePage() {
 
         setPosts(filteredPosts);
 
-    }, [search, filter, sort]);
+    }, [search, filter, sort, allPosts]);
 
     return (
         <>
@@ -49,7 +52,11 @@ export default function HomePage() {
                 onFilter={setFilter}
                 onSort={setSort}
             />
-            <PostLists posts={posts} />
+            <button className="home-expand-btn" onClick={() => setExpandAll(!expandAll)}>{expandAll ? "Riduci tutti" : "Estendi tutti"}</button>
+            <PostLists posts={posts} expandAll={expandAll}/>
+            
+            <Map/>
+            
         </>
     );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function PostCard({ post }) {
+export default function PostCard({ post, expandAll }) {
     const [btnOpen, setBtnOpen] = useState(false)
 
     function renderStars(value) {
@@ -18,7 +18,7 @@ export default function PostCard({ post }) {
             <button onClick={() => setBtnOpen(!btnOpen)}>
                 {btnOpen ? "Chiudi" : "Estendi"}
             </button>
-            {btnOpen && (
+            {(btnOpen || expandAll) && (
                 <div className="details">
                     <h2 className="title-details">DETTAGLI</h2>
                     <h2 className="place-details"><strong className="strong-place-details">Luogo:</strong> {post.luogo}</h2>
